@@ -1,7 +1,8 @@
 # ozzo-di
 
-[![Build Status](https://travis-ci.org/go-ozzo/ozzo-di.svg?branch=master)](https://travis-ci.org/go-ozzo/ozzo-di)
 [![GoDoc](https://godoc.org/github.com/go-ozzo/ozzo-di?status.png)](http://godoc.org/github.com/go-ozzo/ozzo-di)
+[![Build Status](https://travis-ci.org/go-ozzo/ozzo-di.svg?branch=master)](https://travis-ci.org/go-ozzo/ozzo-di)
+[![Coverage](http://gocover.io/_badge/github.com/go-ozzo/ozzo-di)](http://gocover.io/github.com/go-ozzo/ozzo-di)
 
 go-ozzo is a dependency injection (DI) container in Go language. It has the following features:
 
