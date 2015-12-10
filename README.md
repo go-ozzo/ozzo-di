@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/go-ozzo/ozzo-di.svg?branch=master)](https://travis-ci.org/go-ozzo/ozzo-di)
 [![Coverage](http://gocover.io/_badge/github.com/go-ozzo/ozzo-di)](http://gocover.io/github.com/go-ozzo/ozzo-di)
 
-go-ozzo is a dependency injection (DI) container in Go language. It has the following features:
+ozzo-di is a dependency injection (DI) container in Go language. It has the following features:
 
 * DI via concrete types, interfaces, and provider functions
 * DI of function parameter values and struct fields
