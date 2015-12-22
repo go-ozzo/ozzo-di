@@ -4,11 +4,6 @@
 [![Build Status](https://travis-ci.org/go-ozzo/ozzo-di.svg?branch=master)](https://travis-ci.org/go-ozzo/ozzo-di)
 [![Coverage](http://gocover.io/_badge/github.com/go-ozzo/ozzo-di)](http://gocover.io/github.com/go-ozzo/ozzo-di)
 
-## 其他语言
-
-[简体中文](/docs/README-zh-CN.md)
-[Русский](/docs/README-ru.md)
-
 ## 说明
 
 ozzo-di 是一个使用 Go 语言实现的依赖注入容器(DI Container)。它包含以下功能：
