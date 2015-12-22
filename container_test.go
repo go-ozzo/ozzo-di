@@ -102,11 +102,36 @@ func TestRegisterInterface(t *testing.T) {
 	if !c.HasRegistered(barType) {
 		t.Errorf("RegisterAs(%v, %v) failed, expected %v is registered", &foo, barType, barType)
 	}
+	c.Unregister(barType)
+	if c.HasRegistered(barType) {
+		t.Errorf("barType is still registered, expected unregistered")
+	}
 
 	fooType := reflect.TypeOf(&foo)
 	if c.HasRegistered(fooType) {
 		t.Errorf("RegisterAs(%v, %v) failed, expected %v is NOT registered", &foo, barType, fooType)
 	}
+
+	defer func() {
+		if e := recover(); e == nil {
+			t.Errorf("Expected a panic when registering an incompatible object")
+		}
+	}()
+	writerType := InterfaceOf((*Writer)(nil))
+	c.RegisterAs(&foo, writerType)
+}
+
+func TestRegisterInterface2(t *testing.T) {
+	var foo Foo
+	fooType := reflect.TypeOf(&foo)
+	writerType := InterfaceOf((*Writer)(nil))
+	c := NewContainer()
+	defer func() {
+		if e := recover(); e == nil {
+			t.Errorf("Expected a panic when registering an incompatible type")
+		}
+	}()
+	c.RegisterAs(fooType, writerType)
 }
 
 func TestRegisterProvider(t *testing.T) {
@@ -342,6 +367,9 @@ func TestInject(t *testing.T) {
 	if con.Request.Bar.(*Foo).a != "xyz" {
 		t.Errorf("Controller.Request.bar.(*Foo).a = %q, expected %q", con.Request.Bar.(*Foo).a, "xyz")
 	}
+
+	// nothing should happen for injecting a non-struct variable
+	c.Inject(1)
 }
 
 func TestCall(t *testing.T) {
@@ -386,4 +414,13 @@ func TestParent(t *testing.T) {
 	if f.a != "abc" {
 		t.Errorf("Build(Foo).a=%q, expected %q", f.a, "abc")
 	}
+}
+
+func TestInterfaceOf(t *testing.T) {
+	defer func() {
+		if e := recover(); e == nil {
+			t.Errorf("Expected a panic when calling InterfaceOf() with a non-interface")
+		}
+	}()
+	InterfaceOf(reflect.TypeOf(Foo{}))
 }
