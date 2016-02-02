@@ -5,8 +5,8 @@
 package di
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 type Bar interface {
@@ -43,14 +43,14 @@ type Context struct {
 }
 
 type Controller struct {
-	*Context `inject`
+	*Context  `inject`
 	Response  Writer `inject`
 	response  Writer `inject`
 	Response2 Writer `inject:"xyz"`
 	Response3 Writer
 
-	Request   Request `inject`
-	action    string
+	Request Request `inject`
+	action  string
 }
 
 func TestRegister(t *testing.T) {

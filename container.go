@@ -6,8 +6,8 @@
 package di
 
 import (
-	"reflect"
 	"fmt"
+	"reflect"
 )
 
 const injectTag = "inject"
@@ -204,9 +204,9 @@ func (c *container) Inject(val interface{}) {
 func (c *container) build(t reflect.Type) reflect.Value {
 	if val, ok := c.values[t]; ok {
 		switch val.(type) {
-		case reflect.Type:  // type mapped to interface
+		case reflect.Type: // type mapped to interface
 			return c.build(val.(reflect.Type))
-		case providerBinding:  // type mapped to provider func
+		case providerBinding: // type mapped to provider func
 			fb := val.(providerBinding)
 			if !fb.shared {
 				return fb.provider(c)
