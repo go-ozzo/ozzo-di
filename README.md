@@ -4,9 +4,10 @@
 [![Build Status](https://travis-ci.org/go-ozzo/ozzo-di.svg?branch=master)](https://travis-ci.org/go-ozzo/ozzo-di)
 [![Coverage](http://gocover.io/_badge/github.com/go-ozzo/ozzo-di)](http://gocover.io/github.com/go-ozzo/ozzo-di)
 
-## Other languages
+## Other Languages
 
-[Русский](/docs/README-ru.md)
+* [Русский](/docs/README-ru.md)
+* [简体中文](/docs/README-zh-CN.md)
 
 ## Description
 
