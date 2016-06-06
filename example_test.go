@@ -6,8 +6,9 @@ package di_test
 
 import (
 	"fmt"
-	"github.com/go-ozzo/ozzo-di"
 	"reflect"
+
+	"github.com/go-ozzo/ozzo-di"
 )
 
 type Bar interface {
