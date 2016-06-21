@@ -1,5 +1,5 @@
-// Copyright 2015 Qiang Xue. All rights reserved.
-// Use of this source code is governed by a BSD-style
+// Copyright 2016 Qiang Xue. All rights reserved.
+// Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
 // Package di implements a dependency injection (DI) container.
@@ -55,9 +55,9 @@ const injectTag = "inject"
 // Note that when building an unregistered type, zero value will be returned. If the type is a struct,
 // the zero value will be further injected by Inject() for those fields tagged with "inject".
 type Container interface {
-	// Parent returns the parent container, if any.
+	// ParentContainer returns the parent container, if any.
 	ParentContainer() Container
-	// SetParent sets the parent container.
+	// SetParentContainer sets the parent container.
 	SetParentContainer(Container)
 
 	// HasRegistered returns a value indicating whether the specified type has been registered before.
