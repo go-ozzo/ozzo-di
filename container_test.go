@@ -145,10 +145,10 @@ func TestRegisterProvider(t *testing.T) {
 	c := NewContainer()
 	c.RegisterProvider(f, barType, true)
 	if !c.HasRegistered(barType) {
-		t.Errorf("RegisterProvider(%v, %v) failed, expected %v is registered", f, barType, barType)
+		t.Errorf("RegisterProvider(func, %v) failed, expected %v is registered", barType, barType)
 	}
 	if c.HasRegistered(funcType) {
-		t.Errorf("RegisterProvider(%v, %v) failed, expected %v is NOT registered", f, barType, funcType)
+		t.Errorf("RegisterProvider(func, %v) failed, expected %v is NOT registered", barType, funcType)
 	}
 }
 
