@@ -2,7 +2,8 @@
 
 [![GoDoc](https://godoc.org/github.com/go-ozzo/ozzo-di?status.png)](http://godoc.org/github.com/go-ozzo/ozzo-di)
 [![Build Status](https://travis-ci.org/go-ozzo/ozzo-di.svg?branch=master)](https://travis-ci.org/go-ozzo/ozzo-di)
-[![Coverage](http://gocover.io/_badge/github.com/go-ozzo/ozzo-di)](http://gocover.io/github.com/go-ozzo/ozzo-di)
+[![Coverage Status](https://coveralls.io/repos/github/go-ozzo/ozzo-di/badge.svg?branch=master)](https://coveralls.io/github/go-ozzo/ozzo-di?branch=master)
+[![Go Report](https://goreportcard.com/badge/github.com/go-ozzo/ozzo-di)](https://goreportcard.com/report/github.com/go-ozzo/ozzo-di)
 
 ## Other Languages
 
