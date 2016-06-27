@@ -263,7 +263,7 @@ func (c *container) inject(v reflect.Value) {
 	for i := 0; i < v.NumField(); i++ {
 		f := v.Field(i)
 		tf := t.Field(i)
-		if f.CanSet() && (tf.Tag == injectTag || tf.Tag.Get(injectTag) != "") {
+		if f.CanSet() && tf.Tag.Get(injectTag) != "" {
 			f.Set(c.build(f.Type()))
 		}
 	}

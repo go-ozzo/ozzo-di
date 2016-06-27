@@ -26,7 +26,7 @@ type Writer interface {
 }
 
 type ResponseWriter struct {
-	Foo *Foo `inject`
+	Foo *Foo `inject:"true"`
 	t   int
 }
 
@@ -35,7 +35,7 @@ func (*ResponseWriter) Write(s string) string {
 }
 
 type Request struct {
-	Bar Bar `inject`
+	Bar Bar `inject:"true"`
 }
 
 type Context struct {
@@ -43,26 +43,26 @@ type Context struct {
 }
 
 type Controller struct {
-	*Context  `inject`
-	Response  Writer `inject`
-	response  Writer `inject`
-	Response2 Writer `inject:"xyz"`
+	*Context  `inject:"true"`
+	Response  Writer `inject:"true"`
+	response  Writer `inject:"true"`
+	Response2 Writer `inject:"true"`
 	Response3 Writer
 
-	Request Request `inject`
+	Request Request `inject:"true"`
 	action  string
 }
 
 func TestRegister(t *testing.T) {
 	var foo1 Foo
-	var foo2 Foo = Foo{}
-	var foo3 *Foo = &Foo{}
-	var foo4 []Foo = make([]Foo, 0)
+	foo2 := Foo{}
+	foo3 := &Foo{}
+	foo4 := make([]Foo, 0)
 	var foo5 [10]Foo
 	var foo6 chan Foo
 	var foo7 map[string]Foo
 	var bar1 Bar = &Foo{}
-	var bar2 *Bar = (*Bar)(nil)
+	bar2 := (*Bar)(nil)
 
 	tests := []struct {
 		value  interface{}
@@ -138,7 +138,7 @@ func TestRegisterProvider(t *testing.T) {
 	var f = func(Container) reflect.Value {
 		return reflect.ValueOf(Foo{})
 	}
-	var bar *Bar = (*Bar)(nil)
+	bar := (*Bar)(nil)
 	funcType := reflect.TypeOf(f)
 	barType := InterfaceOf(bar)
 
@@ -179,17 +179,17 @@ func TestBuildBasic(t *testing.T) {
 func TestBuildComplex(t *testing.T) {
 	c := NewContainer()
 
-	var slice []int = c.Make(reflect.TypeOf([]int(nil))).([]int)
+	slice := c.Make(reflect.TypeOf([]int(nil))).([]int)
 	if slice == nil || len(slice) != 0 {
 		t.Errorf("Make([]int): expected []int{}, got %#v", slice)
 	}
 
-	var m map[string]Foo = c.Make(reflect.TypeOf(map[string]Foo{})).(map[string]Foo)
+	m := c.Make(reflect.TypeOf(map[string]Foo{})).(map[string]Foo)
 	if m == nil || len(m) != 0 {
 		t.Errorf("Make(map[string]Foo): expected map[string]Foo{}, got %#v", slice)
 	}
 
-	var ch chan Foo = c.Make(reflect.TypeOf(make(chan Foo))).(chan Foo)
+	ch := c.Make(reflect.TypeOf(make(chan Foo))).(chan Foo)
 	if ch == nil || len(ch) != 0 {
 		t.Errorf("Make(chan Foo): expected chan Foo{}, got %#v", ch)
 	}

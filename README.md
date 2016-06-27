@@ -130,7 +130,7 @@ c.RegisterProvider(func(di.Container) interface{} {
 // ...following the previous registration example...
 
 type Composite struct {
-    Bar `inject`
+    Bar `inject:"true"`
 }
 
 // 1. struct field injection:

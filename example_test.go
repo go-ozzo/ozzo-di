@@ -28,7 +28,7 @@ func (f *Foo) String() string {
 }
 
 type MyBar struct {
-	Bar `inject`
+	Bar `inject:"true"`
 }
 
 func Example() {
