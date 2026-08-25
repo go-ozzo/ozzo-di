@@ -183,3 +183,13 @@ When injecting a value for a type `T` that has not been registered, the followin
 ## Credits
 
 ozzo-di has referenced the implementation of [codegansta/inject](https://github.com/codegangsta/inject/).
+
+## Star History
+
+<a href="https://starhistory.io">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.starhistory.io/png?repos=go-ozzo/ozzo-di&style=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.starhistory.io/png?repos=go-ozzo/ozzo-di&style=professional" />
+   <img alt="Star History Chart" src="https://api.starhistory.io/png?repos=go-ozzo/ozzo-di" width="800" />
+ </picture>
+</a>
