@@ -345,7 +345,7 @@ func TestInject(t *testing.T) {
 		t.Errorf("Controller.Response should not be nil")
 	}
 	if con.Response.(*ResponseWriter).t != 123 {
-		t.Errorf("Controller.Response.t = %q, expected %q", con.Response.(*ResponseWriter).t, 123)
+		t.Errorf("Controller.Response.t = %d, expected %d", con.Response.(*ResponseWriter).t, 123)
 	}
 	// inject struct tag
 	if con.Response2 == nil {
