@@ -17,40 +17,40 @@ const injectTag = "inject"
 // Using Container involves two steps. First, register values, types, or providers with the types
 // that should allow DI. Second, use one of the DI methods to achieve DI. For example,
 //
-//   import (
-//       "reflect"
-//       "github.com/go-ozzo/ozzo-di"
-//   )
+//	import (
+//	    "reflect"
+//	    "github.com/go-ozzo/ozzo-di"
+//	)
 //
-//   c := di.NewContainer()
+//	c := di.NewContainer()
 //
-//   // Step 1: register values, types, providers
+//	// Step 1: register values, types, providers
 //
-//   // register the value Foo{"abc"} as type Foo
-//   c.Register(Foo{"abc"})
-//   // register the value Foo{"abc"} as the interface Bar
-//   c.RegisterAs(Foo{"abc"}, di.InterfaceOf((*Bar)(nil)))
-//   // register the struct Foo as the interface Bar
-//   c.RegisterAs(reflect.TypeOf(Foo{}), di.InterfaceOf((*Bar)(nil)))
-//   // register a provider that returns a shared value as the interface Bar
-//   c.RegisterProvider(func(Container) reflect.Value {
-//       return reflect.ValueOf(&Foo{"xyz"})
-//   }, di.InterfaceOf((*Bar)(nil)), true)
+//	// register the value Foo{"abc"} as type Foo
+//	c.Register(Foo{"abc"})
+//	// register the value Foo{"abc"} as the interface Bar
+//	c.RegisterAs(Foo{"abc"}, di.InterfaceOf((*Bar)(nil)))
+//	// register the struct Foo as the interface Bar
+//	c.RegisterAs(reflect.TypeOf(Foo{}), di.InterfaceOf((*Bar)(nil)))
+//	// register a provider that returns a shared value as the interface Bar
+//	c.RegisterProvider(func(Container) reflect.Value {
+//	    return reflect.ValueOf(&Foo{"xyz"})
+//	}, di.InterfaceOf((*Bar)(nil)), true)
 //
-//   // Step 2: dependency injection
+//	// Step 2: dependency injection
 //
-//   // use `inject` tag to indicate which fields can be injected
-//   type Tee struct {
-//           Foo `inject`
-//       bar Bar `inject`
-//   }
-//   // inject the fields of a struct
-//   t := Tee{}
-//   c.Inject(&t)
-//   // inject function parameters
-//   c.Call(func(bar Bar, foo Foo) {...})
-//   // build a value of the specified type with injection
-//   t2 := c.Build(reflect.TypeOf(&Tee{})).(*Tee)
+//	// use `inject` tag to indicate which fields can be injected
+//	type Tee struct {
+//	        Foo `inject`
+//	    bar Bar `inject`
+//	}
+//	// inject the fields of a struct
+//	t := Tee{}
+//	c.Inject(&t)
+//	// inject function parameters
+//	c.Call(func(bar Bar, foo Foo) {...})
+//	// build a value of the specified type with injection
+//	t2 := c.Build(reflect.TypeOf(&Tee{})).(*Tee)
 //
 // Note that when building an unregistered type, zero value will be returned. If the type is a struct,
 // the zero value will be further injected by Inject() for those fields tagged with "inject".
@@ -70,11 +70,11 @@ type Container interface {
 	// RegisterAs registers the specified value or type, and associates it with the specified type.
 	// For example,
 	//
-	//   c := di.NewContainer()
-	//   // register a Foo struct as the Bar interface
-	//   c.RegisterAs(&Foo{"abc"}, di.InterfaceOf((*Bar)(nil)))
-	//   // register the Foo type as the Bar interface
-	//   c.RegisterAs(reflect.TypeOf(&Foo{}), di.InterfaceOf((*Bar)(nil)))
+	//	c := di.NewContainer()
+	//	// register a Foo struct as the Bar interface
+	//	c.RegisterAs(&Foo{"abc"}, di.InterfaceOf((*Bar)(nil)))
+	//	// register the Foo type as the Bar interface
+	//	c.RegisterAs(reflect.TypeOf(&Foo{}), di.InterfaceOf((*Bar)(nil)))
 	RegisterAs(interface{}, reflect.Type)
 	// RegisterProvider registers the provider and associates it with the specified type.
 	// When injecting or making a value for the type, the provider will be called and
@@ -117,9 +117,9 @@ func NewContainer() Container {
 // It is often used when calling RegisterAs() or Make() where you may want to specify an interface type.
 // For example,
 //
-//   c := di.NewContainer()
-//   c.RegisterAs(Foo{}, di.InterfaceOf((*Bar)(nil)))
-//   foo := di.Make(di.InterfaceOf((*Bar)(nil)))
+//	c := di.NewContainer()
+//	c.RegisterAs(Foo{}, di.InterfaceOf((*Bar)(nil)))
+//	foo := di.Make(di.InterfaceOf((*Bar)(nil)))
 func InterfaceOf(iface interface{}) reflect.Type {
 	t := reflect.TypeOf(iface)
 	for t.Kind() == reflect.Ptr {
