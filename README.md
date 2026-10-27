@@ -1,8 +1,7 @@
 # ozzo-di
 
-[![GoDoc](https://godoc.org/github.com/go-ozzo/ozzo-di?status.png)](http://godoc.org/github.com/go-ozzo/ozzo-di)
-[![Build Status](https://travis-ci.org/go-ozzo/ozzo-di.svg?branch=master)](https://travis-ci.org/go-ozzo/ozzo-di)
-[![Coverage Status](https://coveralls.io/repos/github/go-ozzo/ozzo-di/badge.svg?branch=master)](https://coveralls.io/github/go-ozzo/ozzo-di?branch=master)
+[![Go Reference](https://pkg.go.dev/badge/github.com/go-ozzo/ozzo-di.svg)](https://pkg.go.dev/github.com/go-ozzo/ozzo-di)
+[![CI](https://github.com/go-ozzo/ozzo-di/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/go-ozzo/ozzo-di/actions/workflows/ci.yml)
 [![Go Report](https://goreportcard.com/badge/github.com/go-ozzo/ozzo-di)](https://goreportcard.com/report/github.com/go-ozzo/ozzo-di)
 
 ## Other Languages
@@ -21,7 +20,7 @@ ozzo-di is a dependency injection (DI) container in Go language. It has the foll
 
 ## Requirements
 
-Go 1.2 or above.
+Go 1.21 or above.
 
 ## Installation
 

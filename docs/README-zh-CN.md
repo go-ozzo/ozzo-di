@@ -1,8 +1,7 @@
 # ozzo-di
 
-[![GoDoc](https://godoc.org/github.com/go-ozzo/ozzo-di?status.png)](http://godoc.org/github.com/go-ozzo/ozzo-di)
-[![Build Status](https://travis-ci.org/go-ozzo/ozzo-di.svg?branch=master)](https://travis-ci.org/go-ozzo/ozzo-di)
-[![Coverage](http://gocover.io/_badge/github.com/go-ozzo/ozzo-di)](http://gocover.io/github.com/go-ozzo/ozzo-di)
+[![Go Reference](https://pkg.go.dev/badge/github.com/go-ozzo/ozzo-di.svg)](https://pkg.go.dev/github.com/go-ozzo/ozzo-di)
+[![CI](https://github.com/go-ozzo/ozzo-di/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/go-ozzo/ozzo-di/actions/workflows/ci.yml)
 
 ## 说明
 
@@ -15,7 +14,7 @@ ozzo-di 是一个使用 Go 语言实现的依赖注入容器(DI Container)。它
 
 ## 需求
 
-Go 1.2 或以上。
+Go 1.21 或以上。
 
 ## 安装
 
