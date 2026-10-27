@@ -77,7 +77,7 @@ func TestRegister(t *testing.T) {
 		{foo3, reflect.TypeOf(&Foo{})},
 		{foo4, reflect.TypeOf(make([]Foo, 0))},
 		{foo5, reflect.TypeOf([10]Foo{})},
-		{foo6, reflect.TypeOf(make(chan Foo, 0))},
+		{foo6, reflect.TypeOf(make(chan Foo))},
 		{foo7, reflect.TypeOf(make(map[string]Foo))},
 		{bar1, reflect.TypeOf(&Foo{})},
 		{bar2, reflect.TypeOf((*Bar)(nil))},
@@ -94,7 +94,7 @@ func TestRegister(t *testing.T) {
 
 func TestRegisterInterface(t *testing.T) {
 	var foo Foo
-	var bar *Bar = (*Bar)(nil)
+	var bar = (*Bar)(nil)
 
 	c := NewContainer()
 	barType := InterfaceOf(bar)

@@ -122,7 +122,7 @@ func NewContainer() Container {
 //	foo := di.Make(di.InterfaceOf((*Bar)(nil)))
 func InterfaceOf(iface interface{}) reflect.Type {
 	t := reflect.TypeOf(iface)
-	for t.Kind() == reflect.Ptr {
+	for t.Kind() == reflect.Pointer {
 		t = t.Elem()
 	}
 	if t.Kind() != reflect.Interface {
@@ -186,7 +186,7 @@ func (c *container) Call(f interface{}) []interface{} {
 
 	s := reflect.ValueOf(f).Call(in)
 
-	r := make([]interface{}, 0)
+	r := make([]interface{}, 0, len(s))
 	for _, rv := range s {
 		r = append(r, rv.Interface())
 	}
@@ -203,19 +203,18 @@ func (c *container) Inject(val interface{}) {
 
 func (c *container) build(t reflect.Type) reflect.Value {
 	if val, ok := c.values[t]; ok {
-		switch val.(type) {
+		switch b := val.(type) {
 		case reflect.Type: // type mapped to interface
-			return c.build(val.(reflect.Type))
+			return c.build(b)
 		case providerBinding: // type mapped to provider func
-			fb := val.(providerBinding)
-			if !fb.shared {
-				return fb.provider(c)
+			if !b.shared {
+				return b.provider(c)
 			}
-			v := fb.provider(c)
+			v := b.provider(c)
 			c.values[t] = v
 			return v
 		default: // type mapped to instance value
-			return val.(reflect.Value)
+			return b.(reflect.Value)
 		}
 	}
 
@@ -225,7 +224,7 @@ func (c *container) build(t reflect.Type) reflect.Value {
 	}
 
 	// try the pointer version
-	ptr := reflect.PtrTo(t)
+	ptr := reflect.PointerTo(t)
 	if _, ok := c.values[ptr]; ok {
 		return c.build(ptr).Elem()
 	}
@@ -242,7 +241,7 @@ func (c *container) build(t reflect.Type) reflect.Value {
 		return reflect.MakeMap(t)
 	case reflect.Chan:
 		return reflect.MakeChan(t, 0)
-	case reflect.Ptr:
+	case reflect.Pointer:
 		if v := c.build(t.Elem()); v.CanAddr() {
 			return v.Addr()
 		}
@@ -251,7 +250,7 @@ func (c *container) build(t reflect.Type) reflect.Value {
 }
 
 func (c *container) inject(v reflect.Value) {
-	for v.Kind() == reflect.Ptr {
+	for v.Kind() == reflect.Pointer {
 		v = v.Elem()
 	}
 
